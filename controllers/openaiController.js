@@ -11,4 +11,7 @@ const generateMeta = async (title) => {
     ],
     max_tokens: 100,
   });
+  console.log(description.data.choices[0].message);
 };
+
+module.exports = { generateMeta };
