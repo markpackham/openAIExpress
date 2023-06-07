@@ -27,4 +27,15 @@ metaForm.addEventListener("submit", async (e) => {
 // image/thumbnail
 imageForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  const res = await fetch("/openapi/image", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt: imageForm.prompt.value }),
+  });
+  const data = await res.json();
+
+  console.log(data);
+
+  thumbnail.setAttribute("src", data.url);
 });
